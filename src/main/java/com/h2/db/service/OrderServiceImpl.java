@@ -1,6 +1,8 @@
 package com.h2.db.service;
 
+import com.h2.db.dto.OrderDto;
 import com.h2.db.entity.Order;
+import com.h2.db.mapper.OrderMapper;
 import com.h2.db.repo.OrderRepository;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
@@ -13,8 +15,11 @@ import org.springframework.stereotype.Service;
 public class OrderServiceImpl implements OrderService {
   OrderRepository repository;
 
+  OrderMapper orderMapper;
+
   @Override
-  public Order saveOrder(Order order) {
+  public Order saveOrder(OrderDto orderDto) {
+    Order order=orderMapper.mapDtoToEntity(orderDto);
     return repository.save(order);
   }
 

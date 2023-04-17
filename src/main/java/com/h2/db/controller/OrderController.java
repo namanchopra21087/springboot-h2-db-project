@@ -1,5 +1,6 @@
 package com.h2.db.controller;
 
+import com.h2.db.dto.OrderDto;
 import com.h2.db.entity.Order;
 import com.h2.db.service.OrderService;
 import jakarta.validation.Valid;
@@ -23,8 +24,8 @@ public class OrderController {
       value = "/order",
       consumes = {MediaType.APPLICATION_JSON_VALUE},
       produces = {MediaType.APPLICATION_JSON_VALUE})
-  public ResponseEntity createOrder(@Valid @RequestBody Order order) {
-    Order result = orderService.saveOrder(order);
+  public ResponseEntity createOrder(@Valid @RequestBody OrderDto orderDto) {
+    Order result = orderService.saveOrder(orderDto);
     return new ResponseEntity(result, HttpStatus.OK);
   }
 
