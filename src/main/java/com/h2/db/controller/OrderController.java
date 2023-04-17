@@ -1,6 +1,6 @@
 package com.h2.db.controller;
 
-import com.h2.db.model.Order;
+import com.h2.db.entity.Order;
 import com.h2.db.service.OrderService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -17,18 +17,23 @@ import org.springframework.web.bind.annotation.*;
 @NoArgsConstructor
 public class OrderController {
 
-    OrderService orderService;
+  OrderService orderService;
 
-    @PostMapping(value = "/order",consumes = {MediaType.APPLICATION_JSON_VALUE},produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity createOrder(@Valid @RequestBody Order order){
-        Order result=orderService.saveOrder(order);
-        return new ResponseEntity(result, HttpStatus.OK);
-    }
+  @PostMapping(
+      value = "/order",
+      consumes = {MediaType.APPLICATION_JSON_VALUE},
+      produces = {MediaType.APPLICATION_JSON_VALUE})
+  public ResponseEntity createOrder(@Valid @RequestBody Order order) {
+    Order result = orderService.saveOrder(order);
+    return new ResponseEntity(result, HttpStatus.OK);
+  }
 
-    @GetMapping(value = "/",consumes = {MediaType.APPLICATION_JSON_VALUE},produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity fetchOrderByOrderId(@PathVariable @NotNull Long orderId){
-        Order result=orderService.fetchOrderByOrderId(orderId);
-        return new ResponseEntity(result, HttpStatus.OK);
-    }
-
+  @GetMapping(
+      value = "/",
+      consumes = {MediaType.APPLICATION_JSON_VALUE},
+      produces = {MediaType.APPLICATION_JSON_VALUE})
+  public ResponseEntity fetchOrderByOrderId(@PathVariable @NotNull Long orderId) {
+    Order result = orderService.fetchOrderByOrderId(orderId);
+    return new ResponseEntity(result, HttpStatus.OK);
+  }
 }

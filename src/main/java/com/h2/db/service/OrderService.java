@@ -1,9 +1,9 @@
 package com.h2.db.service;
 
-import com.h2.db.model.Order;
+import com.h2.db.entity.Order;
 
-import java.util.List;
 public interface OrderService {
-    Order saveOrder(Order order);
-    Order fetchOrderByOrderId(Long orderId);
+  Order saveOrder(Order order);
+
+  Order fetchOrderByOrderId(Long orderId);
 }
