@@ -6,7 +6,6 @@ import com.h2.db.mapper.OrderMapper;
 import com.h2.db.repo.OrderRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

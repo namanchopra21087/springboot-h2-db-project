@@ -8,6 +8,7 @@ import lombok.Data;
 
 @Data
 public class OrderDto {
+  Long orderId;
   @NotNull String orderName;
   @NotNull String sku;
   @NotNull Integer quantity;
