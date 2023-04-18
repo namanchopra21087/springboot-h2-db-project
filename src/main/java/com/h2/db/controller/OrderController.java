@@ -5,8 +5,7 @@ import com.h2.db.entity.Order;
 import com.h2.db.service.OrderService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +13,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class OrderController {
 
-  OrderService orderService;
+  private final OrderService orderService;
 
   @PostMapping(
       value = "/order",
