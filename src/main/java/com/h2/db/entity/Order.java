@@ -2,7 +2,6 @@ package com.h2.db.entity;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
-
 import lombok.Builder;
 import lombok.Data;
 
