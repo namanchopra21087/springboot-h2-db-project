@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
@@ -33,6 +35,15 @@ public class OrderController {
       produces = {MediaType.APPLICATION_JSON_VALUE})
   public ResponseEntity fetchOrderByOrderId(@PathVariable @NotNull Long orderId) {
     Order result = orderService.fetchOrderByOrderId(orderId);
+    return new ResponseEntity(result, HttpStatus.OK);
+  }
+
+  @GetMapping(
+      value = "/fetchAll/",
+      consumes = {MediaType.APPLICATION_JSON_VALUE},
+      produces = {MediaType.APPLICATION_JSON_VALUE})
+  public ResponseEntity fetchAll() {
+    List<Order> result = orderService.fetchAll();
     return new ResponseEntity(result, HttpStatus.OK);
   }
 }
