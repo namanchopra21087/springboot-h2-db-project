@@ -5,10 +5,7 @@ import com.h2.db.entity.Order1;
 import com.h2.db.entity.Product;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class StreamsPractiseQuestions {
@@ -86,5 +83,17 @@ public class StreamsPractiseQuestions {
                 .collect(Collectors.toList()));
 
         /** Exercise 4 — Obtain a list of products ordered by customer of tier 2 between 01-Feb-2021 and 01-Apr-2021*/
+        orderLst.stream()
+                .filter(order1 -> order1.getCustomer().getTier()==2)
+                .filter(order1 -> order1.getOrderDate().compareTo(LocalDate.of(2021,02,01))>0)
+                .filter(order1 -> order1.getOrderDate().compareTo(LocalDate.of(2021,04,01))<0)
+                .flatMap(order1 -> order1.getProducts().stream())
+                .distinct()
+                .collect(Collectors.toList());
+
+        /**Exercise 5 — Get the cheapest products of “Books” category*/
+        System.out.println(prdLst.stream().filter(product -> "Books".equals(product.getCategory()))
+                .sorted(Comparator.comparing(Product::getPrice))
+                        .findFirst().get());
     }
 }
