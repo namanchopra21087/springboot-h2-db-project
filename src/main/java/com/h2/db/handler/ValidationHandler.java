@@ -33,6 +33,6 @@ public class ValidationHandler extends ResponseEntityExceptionHandler {
               errors.put(fieldName, message);
             });
     return new ResponseEntity<Object>(
-        new ResponseObject("Validation Failed", errors, null, null), HttpStatus.BAD_REQUEST);
+        new ResponseObject("Validation Failed With Reason", errors, null, null), HttpStatus.BAD_REQUEST);
   }
 }
