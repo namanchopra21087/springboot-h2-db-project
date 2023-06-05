@@ -16,14 +16,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class ValidationHandler extends ResponseEntityExceptionHandler {
 
-    /**
-     *
-     * @param ex
-     * @param headers
-     * @param status
-     * @param request
-     * @return
-     */
+  /**
+   * @param ex
+   * @param headers
+   * @param status
+   * @param request
+   * @return
+   */
   @Override
   protected ResponseEntity<Object> handleMethodArgumentNotValid(
       MethodArgumentNotValidException ex,
@@ -41,6 +40,7 @@ public class ValidationHandler extends ResponseEntityExceptionHandler {
               errors.put(fieldName, message);
             });
     return new ResponseEntity<Object>(
-        new ResponseObject("Validation Failed With Reason", errors, null, null), HttpStatus.BAD_REQUEST);
+        new ResponseObject("Validation Failed With Reason", errors, null, null),
+        HttpStatus.BAD_REQUEST);
   }
 }

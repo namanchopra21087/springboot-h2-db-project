@@ -1,0 +1,24 @@
+version: '2.17.3'
+
+services:
+  springBootApp:
+    image: 'namanchopra21087/springapi:5.6.0'
+    container_name: springBootApp
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresdb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresdb:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  postgresdb:
+    image: 'postgres:latest'
+    container_name: postgresdb
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root

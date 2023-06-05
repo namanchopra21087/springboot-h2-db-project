@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 
 @Entity
-@Table(name = "Order")
+@Table(name = "Order2")
 @Data
 @Builder
 public class Order {
